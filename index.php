@@ -64,5 +64,16 @@
 
 
 </div>
+
+
+
+
+
+<footer class="footer navbar-fixed-bottom ">
+	<hr>
+    <div class="container">
+	    &copy;Powered by doitlater team
+    </div>
+</footer>
 </body>
 </html>

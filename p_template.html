@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Wards bed arrangement system</title>
+   <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+   <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+   <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+   <style >
+	   td
+
+		{
+		
+		    text-align:center;
+		
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="component.css" />
+</head>
+<body>
+
+<nav class="navbar navbar-inverse" role="navigation">
+   <div class="navbar-header">
+      <a class="navbar-brand" href="index.php">WBAS</a>
+   </div>
+   <div>
+      <ul class="nav navbar-nav">
+         <li class="active"><a href="p_template.html" >info</a></li>
+         <li><a href="logout.php">logout</a></li>
+         
+      </ul>
+   </div>
+    <div>
+      <p class="navbar-text navbar-right">Hello!
+         <a href="#" class="navbar-link">Thomas</a>
+         
+      </p>
+   </div>
+</nav>
+<div class="container">
+	<img src="images/WBAS.png" class="img-rounded"></img>
+	<div class="row">
+<!-- 		<div class="col-sm-6 col-md-6 col-lg-6"> -->
+			<table class="table table-striped">
+				  <tbody>
+				      <tr>
+				         <td>ID</td>
+				         <td id="pid">1</td>
+				      </tr>
+				      <tr>
+				         <td>Name</td>
+				         <td id="name">Thomas</td>
+				      </tr>
+				      <tr>
+				         <td>Age</td>
+				         <td id="age">25</td>
+				      </tr>
+				      <tr>
+					      <td>Symptom</td>
+					      <td id="symptom">arm fracture</td>
+					  </tr>
+					  <tr>
+						  <td>Doctor</td>
+						  <td><a href="" id="doctor">MR.Chen</a></td>
+					  </tr>
+					  <tr>
+						  <td>Nurse</td>
+						  <td><a href="" id="Nurse">Ms.wang</a></td>
+					  </tr>
+					  <tr>
+						  <td>Bed</td>
+						  <td><a href="" id="bed">No.1</a></td>
+					  </tr>
+					  <tr>
+						  <td>Living Period</td>
+						  <td id="living">2016.5.12-2016.5.19</td>
+					  </tr>
+				   </tbody>
+			</table>
+			
+			<div class="col-sm-offset-5 col-sm-10">
+				<button class="md-trigger btn btn-default" data-modal="modal-1">I want prolong!!!</button>
+            </div>
+
+<!-- 		</div> -->
+	</div>   
+</div>
+
+</div>
+<div class="md-overlay"></div>
+<footer class="footer navbar-fixed-bottom ">
+	<hr>
+    <div class="container">
+	    &copy;Powered by doitlater team
+    </div>
+</footer>
+<div class="md-modal md-effect-1" id="modal-1">
+			<div class="md-content">
+					<h3>Prolong!</h3>
+				<div>
+					<p>Input prolong day and pay,200RMB/day:</p>
+					<div class="form-group">
+				         <label for="firstname" class="col-sm-2 control-label ">Days:</label>
+				         <div class="col-sm-10">
+				            <input type="text" class="input-xlarge days" pattern="^[0-9]*" 
+            placeholder="please input days(int)" onchange="daychange(this.value)">
+				         </div>
+      				</div>
+      				<div class="form-group">
+				         <label style="layout:inline">Amount:</label>
+				         <label style="layout:inline">0</label>
+				    </div>						
+					</ul>
+					<button class="md-close">Close</button>
+					<button class="md-close">pay and conform</button>
+				</div>
+			</div>
+		</div>
+
+
+
+<script >
+	function daychange(obj){
+		var passl = document.getElementById("amount"); 
+		passl.innerHTML=parseInt(obj)*200;
+		
+	}
+	
+	
+</script>
+
+
+<!-- classie.js by @desandro: https://github.com/desandro/classie -->
+		<script src="js/classie.js"></script>
+		<script src="js/modalEffects.js"></script>
+
+		<!-- for the blur effect -->
+		<!-- by @derSchepp https://github.com/Schepp/CSS-Filters-Polyfill -->
+<!--
+		<script>
+			// this is important for IEs
+			var polyfilter_scriptpath = '/js/';
+		</script>
+		<script src="js/cssParser.js"></script>
+		<script src="js/css-filters-polyfill.js"></script>
+-->
+
+
+</body>
+
+</html>

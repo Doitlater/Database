@@ -108,7 +108,19 @@
         function check() {  
             document.getElementById('ok').disabled = 'disabled';  
         }  
-</script>  
+</script> 
+
+
+
+
+
+<footer class="footer navbar-fixed-bottom ">
+	<hr>
+    <div class="container">
+	    &copy;Powered by doitlater team
+    </div>
+</footer>
+ 
 </body>
 
 </html>
