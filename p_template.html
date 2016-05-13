@@ -14,7 +14,6 @@
 		
 		}
 	</style>
-	<link rel="stylesheet" type="text/css" href="component.css" />
 </head>
 <body>
 
@@ -78,7 +77,9 @@
 			</table>
 			
 			<div class="col-sm-offset-5 col-sm-10">
-				<button class="md-trigger btn btn-default" data-modal="modal-1">I want prolong!!!</button>
+				<button class="btn btn-primary btn-lg" data-toggle="modal" 
+   data-target="#myModal">I want prolong!!!</button>
+<!-- 				<button class="md-trigger btn btn-default" data-modal="modal-1">I want prolong!!!</button> -->
             </div>
 
 <!-- 		</div> -->
@@ -93,28 +94,48 @@
 	    &copy;Powered by doitlater team
     </div>
 </footer>
-<div class="md-modal md-effect-1" id="modal-1">
-			<div class="md-content">
-					<h3>Prolong!</h3>
-				<div>
-					<p>Input prolong day and pay,200RMB/day:</p>
-					<div class="form-group">
-				         <label for="firstname" class="col-sm-2 control-label ">Days:</label>
-				         <div class="col-sm-10">
-				            <input type="text" class="input-xlarge days" pattern="^[0-9]*" 
-            placeholder="please input days(int)" onchange="daychange(this.value)">
-				         </div>
-      				</div>
-      				<div class="form-group">
-				         <label style="layout:inline">Amount:</label>
-				         <label style="layout:inline">0</label>
-				    </div>						
-					</ul>
-					<button class="md-close">Close</button>
-					<button class="md-close">pay and conform</button>
-				</div>
-			</div>
-		</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" 
+               data-dismiss="modal" aria-hidden="true">
+                  &times;
+            </button>
+            <h4 class="modal-title" id="myModalLabel" style="text-align: center">
+               Prolong!
+            </h4>
+         </div>
+         <div class="modal-body" >
+            Input prolong day and pay,200RMB/day:
+         </div>
+         <div class="form-group" >
+	         <div class="col-md-offset-1">
+		 	<label for="firstname" class="col-sm-2 control-label " >Days:</label>
+			 <div class="col-sm-10">
+			    <input type="text" class="input-xlarge days" pattern="^[0-9]*" 
+				placeholder="please input days(int)" onchange="daychange(this.value)">
+			 </div>
+			 </div>
+      	</div>
+		<div class="form-group">
+			<div class="col-md-offset-1">
+	         <label style="layout:inline" >Amount:</label>
+	         <label style="layout:inline" id="amount">0</label>
+	   </div>
+    	</div>	
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default" 
+               data-dismiss="modal">close
+            </button>
+            <button type="button" class="btn btn-primary">
+               pay and conform
+            </button>
+         </div>
+      </div><!-- /.modal-content -->
+</div><!-- /.modal -->
+</div>
 
 
 
@@ -127,23 +148,6 @@
 	
 	
 </script>
-
-
-<!-- classie.js by @desandro: https://github.com/desandro/classie -->
-		<script src="js/classie.js"></script>
-		<script src="js/modalEffects.js"></script>
-
-		<!-- for the blur effect -->
-		<!-- by @derSchepp https://github.com/Schepp/CSS-Filters-Polyfill -->
-<!--
-		<script>
-			// this is important for IEs
-			var polyfilter_scriptpath = '/js/';
-		</script>
-		<script src="js/cssParser.js"></script>
-		<script src="js/css-filters-polyfill.js"></script>
--->
-
 
 </body>
 
