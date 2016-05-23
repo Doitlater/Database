@@ -26,7 +26,6 @@
    <div>
       <ul class="nav navbar-nav">
          <li class="active"><a href="d_template.html" >info</a></li>
-         <li><a href="d_schedule.html">schedule</a></li>
          <li><a href="d_patient.html">patient</a></li>
          <li><a href="d_pro.html">proscription</a></li>
          <li><a href="logout.php">logout</a></li>
@@ -34,8 +33,8 @@
       </ul>
    </div>
     <div>
-      <p class="navbar-text navbar-right">Hello! Doctor 
-         <a href="#" class="navbar-link">Thomas</a>
+      <p class="navbar-text navbar-right">Hello! <?php session_start(); echo $_SESSION['identity'].' ';?>
+         <a href="d_template.php?uid=<?php echo $_SESSION['id']; ?>" class="navbar-link"><?php echo $_SESSION['name'];?></a>
          
       </p>
    </div>
@@ -49,19 +48,21 @@
 				  <tbody>
 					  <?php
 					    require_once("database_connect.php");
-					    $strsql="SELECT * FROM users where uid=".$_GET['uid'];
+					    $strsql="SELECT * FROM Doctor where id='".$_SESSION['id']."'";
  					    if ($result =$mysqli->query($strsql)) {
 	 					    while($obj = $result->fetch_object()){
-		 					   echo "<tr><td>username</td><td>".$obj->username."</td></tr>\n";
-					           echo "<tr><td>passwd</td><td>".$obj->password."</td></tr>\n";
-					           echo "<tr><td>uid</td><td>".$obj->uid."</td></tr>\n";
+		 					   echo "<tr><td>DocName</td><td>".$obj->DocName."</td></tr>\n";
+					           echo "<tr><td>age</td><td>".$obj->age."</td></tr>\n";
+					           echo "<tr><td>dept_id</td><td><a href='find?i=dept&id='".$obj->dept_id.">".$obj->dept_id."</a></td></tr>\n";
+					           echo "<tr><td>phone</td><td>".$obj->phone."</td></tr>\n";
+					           echo "<tr><td>email</td><td>".$obj->email."</td></tr>\n";
+					           echo "<tr><td>self-introduction</td><td>".$obj->self_intro."</td></tr>\n";
 					        } 
+					        $result->close(); 
+							unset($obj);  
  					    }
- 					    else{
-	 					    echo "no result";
- 					    }
- 					    $result->close(); 
-					    unset($obj);  
+ 					   
+ 					    
  					    $mysqli->close();
 					  ?>
 <!--
