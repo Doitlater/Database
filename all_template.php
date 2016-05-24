@@ -1,13 +1,13 @@
 <html>
 <head>
    <title>Wards bed arrangement system</title>
+
 <link href="bootstrap.min.css" rel="stylesheet" type="text/css"/>
 <script src="jquery2.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 
    <style >
 	   td
-
 		{
 		
 		    text-align:center;
@@ -21,6 +21,8 @@
 <nav class="navbar navbar-inverse" role="navigation">
    <div class="navbar-header">
       <a class="navbar-brand" href="index.php">WBAS</a>
+	  <a class="navbar-brand" href="<?php   echo (getenv("HTTP_REFERER"));       ?>">Return</a>
+ 
    </div>
 </nav>
 <!--
