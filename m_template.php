@@ -25,17 +25,20 @@
    </div>
    <div>
       <ul class="nav navbar-nav">
-         <li class="active"><a href="n_template.php" >info</a></li>
-         <li><a href="n_schedule.php">schedule</a></li>
-		 <!-- <li><a href="n_treatment.php">treatment</a></li> -->
+         <li class="active"><a href="m_template.php" >info</a></li>
+         <li><a href="beds.php">beds</a></li>
+         <!-- <li><a href="requests.php">requests</a></li>  -->
+		 <li><a href="reg.php">Registration</a></li>
          <li><a href="logout.php">logout</a></li>
          
       </ul>
    </div>
     <div>
-		<p class="navbar-text navbar-right">Hello! <?php session_start(); echo $_SESSION['identity'].' ';?>
-			<a href="n_template.php?uid=<?php echo $_SESSION['id']; ?>" class="navbar-link"><?php echo $_SESSION['name'];?></a>
-		</p>
+ <p class="navbar-text navbar-right">Hello! <?php session_start(); echo $_SESSION['identity'].' ';?>
+         <a href="m_template.php?uid=<?php echo $_SESSION['id']; ?>" class="navbar-link"><?php echo $_SESSION['name'];?></a>
+         
+      </p>
+
    </div>
 </nav>
 <div class="container">
@@ -44,19 +47,14 @@
 <!-- 		<div class="col-sm-6 col-md-6 col-lg-6"> -->
 			<table class="table table-striped">
 				  <tbody>
-						<?php
-					    require_once("database_connect.php");
-					    $strsql="SELECT * FROM Nurse where id=".$_SESSION['id'];
+					  <?php
+					  require_once("database_connect.php");
+					    $strsql="SELECT * FROM manager where id='".$_SESSION['id']."'";
  					    if ($result =$mysqli->query($strsql)) {
 	 					    while($obj = $result->fetch_object()){
-		 					   echo "<tr><td>Name</td><td>".$obj->NName."</td></tr>\n";
-					           echo "<tr><td>Age</td><td>".$obj->age."</td></tr>\n";
-					           
-							   $strsql1="SELECT DName FROM Department where id=".$obj->dept_id;
-							   $obj1 = $mysqli->query($strsql1)->fetch_object();
-							   //var_dump($obj1); 
-					           echo "<tr><td>Department</td><td><a href='find?i=doctor&id=".$obj->dept_id."'>".$obj1->DName."</a></td></tr>\n";
-					           echo "<tr><td>Self Introduction</td><td>".$obj->self_intro."</td></tr>\n";
+		 					   echo "<tr><td>Name</td><td>".$obj->MName."</td></tr>\n";
+					           echo "<tr><td>age</td><td>".$obj->age."</a></td></tr>\n";
+					           echo "<tr><td>self-introduction</td><td>".$obj->self_intro."</td></tr>\n";
 					        } 
 					        $result->close(); 
 							unset($obj);  
@@ -64,7 +62,26 @@
  					   
  					    
  					    $mysqli->close();
-					  ?>
+ 					    ?>
+<!--
+				      <tr>
+				         <td>ID</td>
+				         <td id="pid">1</td>
+				      </tr>
+				      <tr>
+				         <td>Name</td>
+				         <td id="name">Thomas</td>
+				      </tr>
+				      <tr>
+				         <td>Age</td>
+				         <td id="age">25</td>
+				      </tr>
+					   <tr>
+				         <td>Self-intro</td>
+				         <td id="intro">I'am a Manager in charge of all beds </td>
+				      </tr>
+-->
+
 
 				   </tbody>
 			</table>

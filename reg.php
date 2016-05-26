@@ -20,10 +20,19 @@
    </div>
    <div>
       <ul class="nav navbar-nav">
-         <li ><a href="index.php">Login</a></li>
-         <li class="active"><a href="reg.php">Registration</a></li>
-         
+          <li ><a href="m_template.php" >info</a></li>
+         <li ><a href="beds.php">beds</a></li>
+         <!-- <li><a href="requests.php">requests</a></li> -->
+		 <li class="active"><a href="reg.php">Registration</a></li>
+         <li><a href="logout.php">logout</a></li>
       </ul>
+   </div>
+      <div>
+ <p class="navbar-text navbar-right">Hello! <?php session_start(); echo $_SESSION['identity'].' ';?>
+         <a href="m_template.php?uid=<?php echo $_SESSION['id']; ?>" class="navbar-link"><?php echo $_SESSION['name'];?></a>
+         
+      </p>
+
    </div>
 </nav>
 <div class="container">
@@ -134,7 +143,6 @@ enctype="multipart/form-data">
 </div>
 
 <div id="erro"></div>
-</div>
 
 <?php 
 if(isset($_FILES['file']["filename"])){
@@ -166,44 +174,56 @@ if(isset($_FILES['file']["filename"])){
 			echo "the file is too big or is not gif/jpeg/jpg/png format";	
 	} 
 }
+if(isset($_POST['identity'])){
 if ($_POST["identity"]=="Patient"){
 	require_once("database_connect.php");
-	$sqlstr="select max(id) from Patient;";
+	$sqlstr="select max(id) as maxx from Patient;";
+	
 	$result =$mysqli->query($sqlstr);
-	$id=(int)($result->field_count)+1;
-	$sqlstr='insert into Patient values('.$id.',"'.$_POST['username'].'",'.$_POST['pwd'].','.$_POST['age'].',"'.$_POST['symptone'].'",'.$_POST['docid'].',null,null);';
+	$obj = $result->fetch_object();
+		
+	$id=intval($obj->maxx) +1;
+	
+	$sqlstr='insert into Patient values('.$id.',"'.$_POST['username'].'",'.$_POST['pwd'].','.$_POST['age'].',"'.$_POST['symptone'].'","'.$_POST['docid'].'",null,null);';
 // 	echo $sqlstr;	
 	$result =$mysqli->query($sqlstr);
+	$sqlstr2='select dname from doctor_info where id="'.$_POST['docid'].'";';
+	$obj =$mysqli->query($sqlstr2)->fetch_object();;
 	if ($result){
 	         echo "success!";
+	         echo "<script>alert('id is ".$id.",and doctor department is ".$obj->dname."')</script>";
 	}else {
 	         echo "Failed";
 	}
 
 }elseif($_POST["identity"]=="Doctor"){
 	require_once("database_connect.php");
-	$sqlstr="select max(id) from Doctor;";
+	$sqlstr="select max(id) as maxx from Doctor;";
 	$result =$mysqli->query($sqlstr);
-	$id=(int)($result->field_count)+1;
-// 	echo"id=".$id;
+	$obj = $result->fetch_object();
+		
+	$id=intval($obj->maxx) +1;
 	$sqlstr="insert into Doctor values(".$id.',"'.$_POST['username'].'",'.$_POST['pwd'].','.$_POST['age'].',"'.$_POST['depid'].'",'.$_POST['phone'].',"'.$_POST['email'].'","'.$_POST['intro'].'");';
 // 	echo $sqlstr;	
 	$result =$mysqli->query($sqlstr);
 	if ($result){
 	         echo "success!";
+	         echo "<script>alert('id is ".$id."')</script>";
 	}else {
 	         echo "Failed";
 	}
 }elseif($_POST["identity"]=="Nurse"){
 	require_once("database_connect.php");
-	$sqlstr="select max(id) from Nurse;";
+	$sqlstr="select max(id) as maxx from Nurse;";
 	$result =$mysqli->query($strsql);
-	$id=(int)($result->field_count)+1;
-	$sqlstr="insert into Nurse values(".$id.',"'.$_POST['username'].'",'.$_POST['pwd'].',"'.$_POST['depid'].'",'.$_POST['age'].',"'.$_POST['intro'].'");';
-	echo $sqlstr;
+	$obj = $result->fetch_object();
+		
+	$id=intval($obj->maxx) +1;	$sqlstr="insert into Nurse values(".$id.',"'.$_POST['username'].'",'.$_POST['pwd'].',"'.$_POST['depid'].'",'.$_POST['age'].',"'.$_POST['intro'].'");';
+	//echo $sqlstr;
 	$result =$mysqli->query($sqlstr);
 	if ($result){
 	         echo "success!";
+	         echo "<script>alert('id is ".$id."')</script>";
 	         
 	}else {
 	         echo "Failed";
@@ -211,21 +231,28 @@ if ($_POST["identity"]=="Patient"){
 	
 }elseif($_POST["identity"]=="Manager"){
 	require_once("database_connect.php");
-	$sqlstr="select max(id) from Manager";
+	$sqlstr="select max(id) as maxx from Manager";
 	$result =$mysqli->query($sqlstr);
-	$id=(int)($result->field_count)+1;
+	$obj = $result->fetch_object();
+		
+	$id=intval($obj->maxx) +1;
 	$sqlstr="insert into Manager values(".$id.',"'.$_POST['username'].'",'.$_POST['pwd'].','.$_POST['age'].',"'.$_POST['intro'].'");';
 // 	echo $sqlstr;	
 	$result =$mysqli->query($sqlstr);
 	if ($result){
 	         echo "success!";
+	         echo "<script>alert('id is ".$id."')</script>";
 	}else {
 	         echo "Failed";
 	}
 
 }
+}
 // header("Location:index.php");
 ?> 
+</div>
+<br/>
+<br/>
 <script>  
 /*
 	function identity(){ 

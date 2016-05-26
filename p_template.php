@@ -47,13 +47,13 @@
 				  <tbody>
 				  <?php
 					    require_once("database_connect.php");
-					    $strsql="SELECT * FROM Patient where id=".$_SESSION['id'];
+					    $strsql="SELECT * FROM Patient where id='".$_SESSION['id']."';";
  					    if ($result =$mysqli->query($strsql)) {
 	 					    while($obj = $result->fetch_object()){
 		 					   echo "<tr><td>Name</td><td>".$obj->PName."</td></tr>\n";
 					           echo "<tr><td>Age</td><td>".$obj->age."</td></tr>\n";
 					           echo "<tr><td>Symptom</td><td>".$obj->symptom."</td></tr>\n";
-							   $strsql1="SELECT DocName FROM Doctor where id=".$obj->attending_doc_id;
+							   $strsql1="SELECT DocName FROM Doctor where id='".$obj->attending_doc_id."';";
 							   $obj1 = $mysqli->query($strsql1)->fetch_object();
 							   //var_dump($obj1); 
 					           echo "<tr><td>Attending Doctor</td><td><a href='find.php?i=doctor&id=".$obj->attending_doc_id."'>".$obj1->DocName."</a></td></tr>\n";
@@ -64,50 +64,22 @@
  					    }
  					   
  					    
- 					    $mysqli->close();
+ 					   
 					  ?>
-<!--				      <tr>
-				         <td>ID</td>
-				         <td id="pid">1</td>
-				      </tr>
-				      <tr>
-				         <td>Name</td>
-				         <td id="name">Thomas</td>
-				      </tr>
-				      <tr>
-				         <td>Age</td>
-				         <td id="age">25</td>
-				      </tr>
-				      <tr>
-					      <td>Symptom</td>
-					      <td id="symptom">arm fracture</td>
-					  </tr>
-					  <tr>
-						  <td>Doctor</td>
-						  <td><a href="" id="doctor">MR.Chen</a></td>
-					  </tr>
-					  <tr>
-						  <td>Nurse</td>
-						  <td><a href="" id="Nurse">Ms.wang</a></td>
-					  </tr>
-					  <tr>
-						  <td>Bed</td>
-						  <td><a href="" id="bed">No.1</a></td>
-					  </tr>
-					  <tr>
-						  <td>Living Period</td>
-						  <td id="living">2016.5.12-2016.5.19</td>
-					  </tr>   -->
 				   </tbody>
 			</table>
 			
-			<div class="col-sm-offset-5 col-sm-10">
+<!--
+			<div class="col-sm-offset-3 col-sm-3">
 				<button class="btn btn-primary btn-lg" data-toggle="modal" 
    data-target="#myModal">I want to prolong!!!</button>
-<!-- 				<button class="md-trigger btn btn-default" data-modal="modal-1">I want prolong!!!</button> -->
             </div>
+-->			<form action="p_template.php" method="post">
+            <div class="col-sm-offset-5 col-sm-5">
+				<button name="leave" type="submit" class="btn btn-primary btn-lg" >Leave!!!</button>
+            </div>
+            </form>
 
-<!-- 		</div> -->
 	</div>   
 </div>
 
@@ -119,6 +91,24 @@
 	    &copy;Powered by doitlater team
     </div>
 </footer>
+<?php
+	if(isset($_POST['leave'])){
+		$strsql2="Delete FROM Patient where id='".$_SESSION['id']."'";
+		//echo $strsql2;
+		$result =$mysqli->query($strsql2);
+		if($result){
+			echo('success!');
+			session_destroy();
+		}
+		else{
+			echo "Failed!";
+		}
+		
+	}
+	
+	
+?>
+<!--
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
    aria-labelledby="myModalLabel" aria-hidden="true">
    <div class="modal-dialog">
@@ -158,9 +148,10 @@
                pay and conform
             </button>
          </div>
-      </div><!-- /.modal-content -->
-</div><!-- /.modal -->
+      </div>
 </div>
+</div>
+-->
 
 
 

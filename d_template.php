@@ -48,7 +48,7 @@
 				  <tbody>
 					  <?php
 					    require_once("database_connect.php");
-					    $strsql="SELECT * FROM Doctor where id=".$_SESSION['id'];
+					    $strsql="SELECT * FROM Doctor where id='".$_SESSION['id']."';";
  					    if ($result =$mysqli->query($strsql)) {
 	 					    while($obj = $result->fetch_object()){
 		 					   echo "<tr><td>Name</td><td>".$obj->DocName."</td></tr>\n";

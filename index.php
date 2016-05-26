@@ -23,7 +23,7 @@
    <div>
       <ul class="nav navbar-nav">
          <li class="active"><a href="index.php">Login</a></li>
-         <li><a href="reg.php">Registration</a></li>
+         
          
       </ul>
    </div>

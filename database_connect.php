@@ -1,7 +1,7 @@
 <?php
     $mysql_server_name="127.0.0.1"; //数据库服务器名称
     $mysql_username="root"; // 连接数据库用户名
-    $mysql_password="jiangli19951031"; // 连接数据库密码
+    $mysql_password="mysql"; // 连接数据库密码
     $mysql_database="WardsBedSystem"; // 数据库的名字
     
     // 连接到数据库
