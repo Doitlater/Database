@@ -96,7 +96,11 @@
 				$_SESSION['name']=$_POST['username'];
 				$_SESSION['identity']=$_POST['identity'];
 				$_SESSION['login']=true;
+<<<<<<< HEAD
 				header('Location:'.$_SESSION['identity'][0].'_template.php');
+=======
+				header('Location:'.$_SESSION['identity'][0].'_template.php?uid='.$_SESSION['id']);
+>>>>>>> b06dd2f755f901b720abe59c1564d0715fc31a70
 		    }
 		    else
 		    	echo("passwd is incorrect");	    

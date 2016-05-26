@@ -144,6 +144,7 @@ enctype="multipart/form-data">
 
 <div id="erro"></div>
 
+
 <?php 
 if(isset($_FILES['file']["filename"])){
 	
@@ -174,6 +175,7 @@ if(isset($_FILES['file']["filename"])){
 			echo "the file is too big or is not gif/jpeg/jpg/png format";	
 	} 
 }
+
 if(isset($_POST['identity'])){
 if ($_POST["identity"]=="Patient"){
 	require_once("database_connect.php");
@@ -192,6 +194,7 @@ if ($_POST["identity"]=="Patient"){
 	if ($result){
 	         echo "success!";
 	         echo "<script>alert('id is ".$id.",and doctor department is ".$obj->dname."')</script>";
+
 	}else {
 	         echo "Failed";
 	}
@@ -203,17 +206,21 @@ if ($_POST["identity"]=="Patient"){
 	$obj = $result->fetch_object();
 		
 	$id=intval($obj->maxx) +1;
+
 	$sqlstr="insert into Doctor values(".$id.',"'.$_POST['username'].'",'.$_POST['pwd'].','.$_POST['age'].',"'.$_POST['depid'].'",'.$_POST['phone'].',"'.$_POST['email'].'","'.$_POST['intro'].'");';
 // 	echo $sqlstr;	
 	$result =$mysqli->query($sqlstr);
 	if ($result){
 	         echo "success!";
+
 	         echo "<script>alert('id is ".$id."')</script>";
+
 	}else {
 	         echo "Failed";
 	}
 }elseif($_POST["identity"]=="Nurse"){
 	require_once("database_connect.php");
+
 	$sqlstr="select max(id) as maxx from Nurse;";
 	$result =$mysqli->query($strsql);
 	$obj = $result->fetch_object();
@@ -224,6 +231,7 @@ if ($_POST["identity"]=="Patient"){
 	if ($result){
 	         echo "success!";
 	         echo "<script>alert('id is ".$id."')</script>";
+
 	         
 	}else {
 	         echo "Failed";
@@ -231,23 +239,29 @@ if ($_POST["identity"]=="Patient"){
 	
 }elseif($_POST["identity"]=="Manager"){
 	require_once("database_connect.php");
+
 	$sqlstr="select max(id) as maxx from Manager";
 	$result =$mysqli->query($sqlstr);
 	$obj = $result->fetch_object();
 		
 	$id=intval($obj->maxx) +1;
+
 	$sqlstr="insert into Manager values(".$id.',"'.$_POST['username'].'",'.$_POST['pwd'].','.$_POST['age'].',"'.$_POST['intro'].'");';
 // 	echo $sqlstr;	
 	$result =$mysqli->query($sqlstr);
 	if ($result){
 	         echo "success!";
+
 	         echo "<script>alert('id is ".$id."')</script>";
+
 	}else {
 	         echo "Failed";
 	}
 
 }
+
 }
+
 // header("Location:index.php");
 ?> 
 </div>
