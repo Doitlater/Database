@@ -25,15 +25,9 @@
    </div>
    <div>
       <ul class="nav navbar-nav">
-<<<<<<< HEAD
          <li class="active"><a href="d_template.php" >info</a></li>
          <li><a href="d_patient.php">patient</a></li>
          <li><a href="d_pre.php">prescription</a></li>
-=======
-         <li class="active"><a href="d_template.html" >info</a></li>
-         <li><a href="d_patient.html">patient</a></li>
-         <li><a href="d_pro.html">proscription</a></li>
->>>>>>> b06dd2f755f901b720abe59c1564d0715fc31a70
          <li><a href="logout.php">logout</a></li>
          
       </ul>
@@ -54,7 +48,6 @@
 				  <tbody>
 					  <?php
 					    require_once("database_connect.php");
-<<<<<<< HEAD
 					    $strsql="SELECT * FROM Doctor where id='".$_SESSION['id']."';";
  					    if ($result =$mysqli->query($strsql)) {
 	 					    while($obj = $result->fetch_object()){
@@ -67,17 +60,6 @@
 					           echo "<tr><td>Phone Number</td><td>".$obj->phone."</td></tr>\n";
 					           echo "<tr><td>Email</td><td>".$obj->email."</td></tr>\n";
 					           echo "<tr><td>Self Introduction</td><td>".$obj->self_intro."</td></tr>\n";
-=======
-					    $strsql="SELECT * FROM Doctor where id='".$_SESSION['id']."'";
- 					    if ($result =$mysqli->query($strsql)) {
-	 					    while($obj = $result->fetch_object()){
-		 					   echo "<tr><td>DocName</td><td>".$obj->DocName."</td></tr>\n";
-					           echo "<tr><td>age</td><td>".$obj->age."</td></tr>\n";
-					           echo "<tr><td>dept_id</td><td><a href='find?i=dept&id='".$obj->dept_id.">".$obj->dept_id."</a></td></tr>\n";
-					           echo "<tr><td>phone</td><td>".$obj->phone."</td></tr>\n";
-					           echo "<tr><td>email</td><td>".$obj->email."</td></tr>\n";
-					           echo "<tr><td>self-introduction</td><td>".$obj->self_intro."</td></tr>\n";
->>>>>>> b06dd2f755f901b720abe59c1564d0715fc31a70
 					        } 
 					        $result->close(); 
 							unset($obj);  

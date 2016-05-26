@@ -2,8 +2,9 @@
 <html>
 <head>
    <title>Wards bed arrangement system</title>
+
+ <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 <link href="bootstrap.min.css" rel="stylesheet" type="text/css"/>
-<script src="jquery2.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <!-- <script src="jquery.min.js"></script> -->
 

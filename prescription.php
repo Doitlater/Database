@@ -1,5 +1,4 @@
 <?php
-
 	include("all_template.php");
 ?>
 
@@ -9,7 +8,6 @@
 
 <div class = "row">
 <form action="prescription.php?uid=<?php echo $_GET['uid']; ?>" method="post">
-
 <table class="table table-striped" style="text-align: center">
 <tbody id="medicine">
 	<tr>
@@ -21,7 +19,6 @@
 	</tr>	
 	<tr>
 		<td><select class="form-control" name="med0" id="med0">
-
 				
                   <option value="null" selected="selected">choose medicine</option>
 				  <?php 
@@ -42,7 +39,6 @@
         </td>
         <td>
 	    	<input type="text" name="mnum0" class="form-control" pattern="^[0-9]*" 
-
             placeholder="number">
 	    </td>
 	    <td>
@@ -52,7 +48,6 @@
 	</tr>		     
 </tbody>
 </table>
-
 <table class="table table-striped" style="text-align: center">
 <tbody id="times">
 	<tr>
@@ -63,15 +58,19 @@
 		</td>
 	</tr>	
 	<tr>
-
-		<td>
+		<td><!-- <select class="form-control" name="time0" id="time0">
+                  <option value="null" selected="selected">choose date</option>
+                  <option value="1" >a</option>
+                  <option value="2">B</option>
+                  <option value="3">C</option>
+                  <option value="4">D</option>
+               </select>  -->
 			   <input type="text" class="form-control" name="time0" id="time0" required
 					   placeholder="Input like 2016-05-05">
         </td>
         <td>
 	    	<input type="text" class="form-control" name="tnum0" id="tnum0" required
 					   placeholder="Input like 13:00:01">
-
 	    </td>
 	    <td>
 		    <button type="button" class="btn btn-primary" onclick="deletes(2)">delete</button>
